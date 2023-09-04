@@ -11,3 +11,6 @@
 *
 # Icebox Features
 * Up to date scoring and standings
+* OAuth
+* Different broswer modes light/dark
+* Notifications 
