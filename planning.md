@@ -4,4 +4,4 @@
 * As user clicks on card the team info will show
 * 
 # WireFrame
-* /Users/brysonlingle/Desktop/Screenshot 2023-09-04 at 2.14.51 PM.png
+* ![Alt text](<Screenshot 2023-09-04 at 2.14.51 PM.png>)
