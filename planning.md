@@ -2,6 +2,7 @@
 * Deployed on Netlify
 * Home Page with team cards
 * As user clicks on card the team info will show
+* Pictures of team on card potentially
 * 
 # WireFrame
 * ![wireframe](<Screenshot 2023-09-04 at 2.14.51 PM.png>)
