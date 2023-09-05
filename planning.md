@@ -2,6 +2,11 @@
 * Solo Project
 # Product Objective
 * The Objective of my app is a easy place to find all of the nfl teams and some basic inforamtion on them all in one area. 
+# MVP 
+* MVP by Thursday the 7th.
+* Teams on home page
+* Click on teams and the stats will show up.
+* This will be for all 32 NFL teams
 # Features 
 * Deployed on Netlify
 * Home Page with team cards

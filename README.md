@@ -14,3 +14,6 @@
 * OAuth
 * Different broswer modes light/dark
 * Notifications 
+* Useable on different size devices
+* Different languages
+* 
