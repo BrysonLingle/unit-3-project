@@ -1,51 +1,65 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./App.css";
 
 export default function Teams() {
-    const [teamStats, setTeamStats] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [teamStats, setTeamStats] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams');
-                const data = await response.json();
-                const teams = data.sports[0].leagues[0].teams
-                console.log(data.sports[0].leagues[0].teams);
-                console.log(teams[0].team.displayName)
-                setTeamStats(teams);
-                setLoading(false);
-            } catch (error) {
-                console.error("Error fetching data from API:", error);
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams"
+        );
+        const data = await response.json();
+        const teams = data.sports[0].leagues[0].teams;
+        setTeamStats(teams);
+        setLoading(false);
+        console.log(teams);
+      } catch (error) {
+        console.error("Error fetching data from API:", error);
+        setLoading(false);
+      }
+    };
 
-        fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
-    return (
-        <div className="container">
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                <div className="team-list">
-                    {Array.isArray(teamStats) ? (
-                        teamStats.map((team, index) => (
-                            <div className="card" key={index}>
-                                <div className="card-title">
-                                    <h3>{team.team.displayName}</h3>
-                                </div>
-                                <div className="card-stats">
-                                    <p>Color {team.team.color}</p>
-                                    <p>Alternate Color {team.team.alternateColor}</p>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <div>No data available</div>
+  return (
+    <div className="container">
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="team-list">
+          {Array.isArray(teamStats) ? (
+            teamStats.map((team, index) => (
+              <Link
+                to={`/TeamDetails/${team.team.id}`} 
+                className="card-button"
+                key={index}
+              >
+                <div className="card">
+                  <div className="card-title">
+                    <h3>{team.team.displayName}</h3>
+                  </div>
+                  <div className="card-stats">
+                    {team.team.logos && team.team.logos.length > 0 && (
+                      <img
+                        src={team.team.logos[0].href}
+                        alt={team.team.displayName + " Logo"}
+                        className="team-logo"
+                      />
                     )}
+                  </div>
                 </div>
-            )}
+              </Link>
+            ))
+          ) : (
+            <div>No data available</div>
+          )}
         </div>
-    );
+      )}
+    </div>
+  );
 }
