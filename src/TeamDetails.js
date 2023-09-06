@@ -36,13 +36,37 @@ export default function TeamDetails() {
             <p>Location: {team.team.location}</p>
             <p>Active: {team.team.isActive ? 'Yes' : 'No'}</p>
             <p>All-Star: {team.team.isAllStar ? 'Yes' : 'No'}</p>
+            {team.team.links && team.team.links.length > 0 && (
+                <div>
+                <a href={team.team.links[1].href} target="_blank" rel="noopener noreferrer">
+                  <button className="teamRosterButton">
+                    Active Roster
+                  </button>
+                </a>
+              </div>
+              
+            )}
             {team.color && (
               <div
                 style={{
-                  backgroundColor: team.color ,
+                  backgroundColor: team.color,
                 }}
               ></div>
             )}
+            <div>
+                <a href={team.team.links[2].href} target="_blank" rel="noopener noreferrer">
+                  <button className="teamRosterButton">
+                    Player Stats
+                  </button>
+                </a>
+              </div>
+              <div>
+                <a href={team.team.links[3].href} target="_blank" rel="noopener noreferrer">
+                  <button className="teamRosterButton">
+                    Schedule
+                  </button>
+                </a>
+              </div>
           </div>
           {team.team.logos && team.team.logos.length > 0 && (
             <div className="logo-container">
