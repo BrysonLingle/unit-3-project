@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <header>
-        <h1>NFL Teams</h1>
+        
       </header>
       
       <main>

@@ -25,12 +25,16 @@ export default function Teams() {
 
     fetchData();
   }, []);
+  <h1>NFL Teams</h1>
 
   return (
     <div className="container">
+        <h1>NFL Teams</h1>
       {loading ? (
         <div>Loading...</div>
+        
       ) : (
+        
         <div className="team-list">
           {Array.isArray(teamStats) ? (
             teamStats.map((team, index) => (
