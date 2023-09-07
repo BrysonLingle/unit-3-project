@@ -17,6 +17,7 @@ export default function TeamDetails() {
         const data = await response.json();
         setTeam(data);
         setLoading(false);
+        console.log(data.team)
       } catch (error) {
         console.error(error);
         setLoading(false);
@@ -37,6 +38,7 @@ export default function TeamDetails() {
             <p>Location: {team.team.location}</p>
             <p>Active: {team.team.isActive ? 'Yes' : 'No'}</p>
             <p>All-Star: {team.team.isAllStar ? 'Yes' : 'No'}</p>
+            <p>Record: {team.team.record} </p>
             {team.team.links && team.team.links.length > 0 && (
                 <div>
                 <a href={team.team.links[1].href} target="_blank" rel="noopener noreferrer">
