@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import 'tailwindcss/tailwind.css'; // Import the entire Tailwind CSS stylesheet
+import './index.css'
+import './App.css'
+import 'tailwindcss/tailwind.css';
 
 export default function TeamDetails() {
   const { id } = useParams();
@@ -35,11 +37,14 @@ export default function TeamDetails() {
         <div>
           <h1>{team.team.displayName}</h1>
           <div className="team-details">
-            <p className="mb-2">Location: <span className="font-semibold">{team.team.location}</span></p>
-            <p className="mb-2">Active: <span className={`text-${team.team.isActive ? 'green' : 'red'}-500`}>{team.team.isActive ? 'Yes' : 'No'}</span></p>
-            <p className="mb-2">All-Star: <span className={`text-${team.team.isAllStar ? 'blue' : 'red'}-500`}>{team.team.isAllStar ? 'Yes' : 'No'}</span></p>
-            <p className="mb-2">Record: <span className="text-red-500">{team.team.record.items[0]?.summary}</span></p>
-            <p className="mb-2">Next Event: <span className="text-purple-500">{team.team.nextEvent[0]?.name}</span></p>
+            <p class="text-red-500-contrast">Location: {team.team.location}</p>
+            <p className='text-gray-500 text-lg'>Active: {team.team.isActive ? 'Yes' : 'No'}</p>
+            <p className='text-gray-500 text-lg'>All-Star: {team.team.isAllStar ? 'Yes' : 'No'}</p>
+            <p className='text-gray-500 text-lg'>Record: {team.team.record.items[0]?.summary}</p>
+            <p className='text-gray-500 text-lg'>Next Event: {team.team.nextEvent[0]?.name}</p>
+            <p className='text-gray-500 text-lg'>Stadium: {team.team.franchise.venue.fullName}</p>
+            <p className='text-gray-500 text-lg'> Division Standings: {team.team.record.standingSummary}</p>
+
 
             {team.team.links && team.team.links.length > 0 && (
               <div className="mt-4">
