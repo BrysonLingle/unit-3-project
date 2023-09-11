@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./App.css";
+import "./index.css";
 
 export default function Teams() {
   const [teamStats, setTeamStats] = useState([]);
@@ -16,7 +20,6 @@ export default function Teams() {
         const teams = data.sports[0].leagues[0].teams;
         setTeamStats(teams);
         setLoading(false);
-        console.log(teams);
       } catch (error) {
         console.error("Error fetching data from API:", error);
         setLoading(false);
@@ -25,21 +28,26 @@ export default function Teams() {
 
     fetchData();
   }, []);
-  <h1>NFL Teams</h1>
+
+  const slickSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  };
 
   return (
     <div className="container">
-        <h1>NFL Teams</h1>
+      <h1 className="text-center text-3xl font-bold mb-4">NFL Teams</h1>
       {loading ? (
         <div>Loading...</div>
-        
       ) : (
-        
-        <div className="team-list">
+        <Slider {...slickSettings}>
           {Array.isArray(teamStats) ? (
             teamStats.map((team, index) => (
               <Link
-                to={`/TeamDetails/${team.team.id}`} 
+                to={`/TeamDetails/${team.team.id}`}
                 className="card-button"
                 key={index}
               >
@@ -51,7 +59,7 @@ export default function Teams() {
                     {team.team.logos && team.team.logos.length > 0 && (
                       <img
                         src={team.team.logos[0].href}
-                        alt={team.team.displayName + " Logo"}
+                        alt={`${team.team.displayName} Logo`}
                         className="team-logo"
                       />
                     )}
@@ -62,7 +70,7 @@ export default function Teams() {
           ) : (
             <div>No data available</div>
           )}
-        </div>
+        </Slider>
       )}
     </div>
   );

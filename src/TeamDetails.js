@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './index.css'
-import './App.css'
-import 'tailwindcss/tailwind.css';
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./App.css";
+import "./index.css";
+import "tailwindcss/tailwind.css";
 
 export default function TeamDetails() {
   const { id } = useParams();
@@ -12,9 +15,11 @@ export default function TeamDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}`);
+        const response = await fetch(
+          `https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}`
+        );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setTeam(data);
@@ -29,27 +34,69 @@ export default function TeamDetails() {
     fetchData();
   }, [id]);
 
+  const slickSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
-    <div>
+    <div className="p-4">
+      <button className="homeButton">
+        <Link
+          to="/"
+          className="back-button text-blue-500 hover:underline"
+        >
+          Back to Teams
+        </Link>
+      </button>
+
       {loading ? (
-        <div>Loading...</div>
+        <div className="text-lg font-bold">Loading...</div>
       ) : team ? (
         <div>
-          <h1>{team.team.displayName}</h1>
+          <h1 className="text-3xl font-bold mb-4">{team.team.displayName}</h1>
           <div className="team-details">
-            <p class="text-red-500-contrast">Location: {team.team.location}</p>
-            <p className='text-gray-500 text-lg'>Active: {team.team.isActive ? 'Yes' : 'No'}</p>
-            <p className='text-gray-500 text-lg'>All-Star: {team.team.isAllStar ? 'Yes' : 'No'}</p>
-            <p className='text-gray-500 text-lg'>Record: {team.team.record.items[0]?.summary}</p>
-            <p className='text-gray-500 text-lg'>Next Event: {team.team.nextEvent[0]?.name}</p>
-            <p className='text-gray-500 text-lg'>Stadium: {team.team.franchise.venue.fullName}</p>
-            <p className='text-gray-500 text-lg'> Division Standings: {team.team.record.standingSummary}</p>
-
+            <p className="text-red-500-contrast text-lg font-bold">
+              Location: {team.team.location}
+            </p>
+            <p className="text-red-500 text-lg font-bold">
+              Active: {team.team.isActive ? "Yes" : "No"}
+            </p>
+            <p className="text-gray-500 text-lg font-bold">
+              All-Star: {team.team.isAllStar ? "Yes" : "No"}
+            </p>
+            <p className="text-gray-500 text-lg font-bold">
+              Record: {team.team.record.items[0]?.summary}
+            </p>
+            <p className="text-gray-500 text-lg font-bold">
+              Next Event:{" "}
+              <a
+                href={team.team.nextEvent[0]?.opponentStatsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                {team.team.nextEvent[0]?.name}
+              </a>
+            </p>
+            <p className="text-gray-500 text-lg font-bold">
+              Stadium: {team.team.franchise.venue.fullName}
+            </p>
+            <p className="text-gray-500 text-lg font-bold">
+              Division Standings: {team.team.standingSummary}
+            </p>
 
             {team.team.links && team.team.links.length > 0 && (
               <div className="mt-4">
-                <a href={team.team.links[1]?.href} target="_blank" rel="noopener noreferrer">
-                  <button className="teamRosterButton">
+                <a
+                  href={team.team.links[1]?.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="teamRosterButton bg-blue-500 text-white font-bold py-2 px-4 rounded">
                     Active Roster
                   </button>
                 </a>
@@ -61,20 +108,29 @@ export default function TeamDetails() {
                 style={{
                   backgroundColor: team.color,
                 }}
+                className="h-10 w-10 mt-4 rounded-full"
               ></div>
             )}
 
             <div>
-              <a href={team.team.links[2]?.href} target="_blank" rel="noopener noreferrer">
-                <button className="teamRosterButton">
+              <a
+                href={team.team.links[2]?.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="teamRosterButton bg-blue-500 text-white font-bold py-2 px-4 rounded">
                   Player Stats
                 </button>
               </a>
             </div>
 
             <div>
-              <a href={team.team.links[3]?.href} target="_blank" rel="noopener noreferrer">
-                <button className="teamRosterButton">
+              <a
+                href={team.team.links[3]?.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="teamRosterButton bg-blue-500 text-white font-bold py-2 px-4 rounded">
                   Schedule
                 </button>
               </a>
@@ -82,17 +138,22 @@ export default function TeamDetails() {
           </div>
 
           {team.team.logos && team.team.logos.length > 0 && (
-            <div className="logo-container">
-              <img
-                src={team.team.logos[0]?.href}
-                alt={`${team.team.displayName} Logo`}
-                className="team-logo"
-              />
+            <div className="logo-container mt-4">
+              <Slider {...slickSettings}>
+                {team.team.logos.map((logo, index) => (
+                  <img
+                    key={index}
+                    src={logo.href}
+                    alt={`${team.team.displayName} Logo`}
+                    className="team-logo"
+                  />
+                ))}
+              </Slider>
             </div>
           )}
         </div>
       ) : (
-        <div>No data available</div>
+        <div className="text-lg font-bold">No data available</div>
       )}
     </div>
   );
