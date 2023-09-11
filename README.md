@@ -6,7 +6,7 @@
 * Javascript
 * React
 # ScreenShots
-* ![Alt text](<../Screenshot 2023-09-11 at 9.28.18 AM.png>)
+* ![Alt text](<Screenshot 2023-09-11 at 9.28.18 AM.png>)
 * ![Team Detail Page](<Screenshot 2023-09-11 at 9.28.55 AM.png>)
 
 
