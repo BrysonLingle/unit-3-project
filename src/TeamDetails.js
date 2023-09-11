@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import "./App.css";
 import "./index.css";
 import "tailwindcss/tailwind.css";
+import Footer from "./Footer";
 
 export default function TeamDetails() {
   const { id } = useParams();
@@ -139,6 +140,8 @@ export default function TeamDetails() {
       ) : (
         <div className="text-lg font-bold">No data available</div>
       )}
+      <Footer />
     </div>
+    
   );
 }

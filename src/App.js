@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Teams from "./Teams";
 import "./App.css";
 import TeamDetails from "./TeamDetails";
-import Footer from "./Footer.js";
+
 
 function App() {
   return (
-    <Router>
-      <header></header>
-      
+    <div>
+
+
       <main>
         <Routes>
           <Route path="/" element={<Teams />} />
@@ -17,9 +17,9 @@ function App() {
         </Routes>
       </main>
 
+
       
-      <Footer />
-    </Router>
+    </div>
   );
 }
 
