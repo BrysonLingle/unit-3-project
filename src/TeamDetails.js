@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./App.css";
 import "./index.css";
 import "tailwindcss/tailwind.css";
@@ -34,20 +31,12 @@ export default function TeamDetails() {
     fetchData();
   }, [id]);
 
-  const slickSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <div className="p-4">
       <button className="homeButton">
         <Link
           to="/"
-          className="back-button text-blue-500 hover:underline"
+          className="back-button text-blue-500 hover:"
         >
           Back to Teams
         </Link>
@@ -59,19 +48,19 @@ export default function TeamDetails() {
         <div>
           <h1 className="text-3xl font-bold mb-4">{team.team.displayName}</h1>
           <div className="team-details">
-            <p className="text-red-500-contrast text-lg font-bold">
+            <p className="text-red-5000-contrast text-lg font-bold">
               Location: {team.team.location}
             </p>
             <p className="text-red-500 text-lg font-bold">
               Active: {team.team.isActive ? "Yes" : "No"}
             </p>
-            <p className="text-gray-500 text-lg font-bold">
+            <p className="text-black-500 text-lg font-bold">
               All-Star: {team.team.isAllStar ? "Yes" : "No"}
             </p>
-            <p className="text-gray-500 text-lg font-bold">
+            <p className="text-black-500 text-lg font-bold">
               Record: {team.team.record.items[0]?.summary}
             </p>
-            <p className="text-gray-500 text-lg font-bold">
+            <p className="text-black-500 text-lg font-bold">
               Next Event:{" "}
               <a
                 href={team.team.nextEvent[0]?.opponentStatsUrl}
@@ -82,10 +71,10 @@ export default function TeamDetails() {
                 {team.team.nextEvent[0]?.name}
               </a>
             </p>
-            <p className="text-gray-500 text-lg font-bold">
+            <p className="text-black-500 text-lg font-bold">
               Stadium: {team.team.franchise.venue.fullName}
             </p>
-            <p className="text-gray-500 text-lg font-bold">
+            <p className="text-black-500 text-lg font-bold">
               Division Standings: {team.team.standingSummary}
             </p>
 
@@ -139,16 +128,11 @@ export default function TeamDetails() {
 
           {team.team.logos && team.team.logos.length > 0 && (
             <div className="logo-container mt-4">
-              <Slider {...slickSettings}>
-                {team.team.logos.map((logo, index) => (
-                  <img
-                    key={index}
-                    src={logo.href}
-                    alt={`${team.team.displayName} Logo`}
-                    className="team-logo"
-                  />
-                ))}
-              </Slider>
+              <img
+                src={team.team.logos[0].href}
+                alt={`${team.team.displayName} Logo`}
+                className="team-logo"
+              />
             </div>
           )}
         </div>

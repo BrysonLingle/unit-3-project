@@ -38,7 +38,7 @@ export default function Teams() {
   };
 
   return (
-    <div className="container">
+    <div className="container mx-auto"> {/* Center horizontally */}
       <h1 className="text-center text-3xl font-bold mb-4">NFL Teams</h1>
       {loading ? (
         <div>Loading...</div>
