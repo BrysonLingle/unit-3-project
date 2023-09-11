@@ -33,6 +33,7 @@ export default function TeamDetails() {
   }, [id]);
 
   return (
+    <div className="flex flex-col min-h-screen">
     <div className="p-4">
       <button className="homeButton">
         <Link
@@ -140,8 +141,8 @@ export default function TeamDetails() {
       ) : (
         <div className="text-lg font-bold">No data available</div>
       )}
+      </div>
       <Footer />
     </div>
-    
   );
 }
