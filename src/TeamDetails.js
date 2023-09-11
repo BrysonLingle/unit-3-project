@@ -22,7 +22,7 @@ export default function TeamDetails() {
         const data = await response.json();
         setTeam(data);
         setLoading(false);
-        console.log(data.team);
+        
       } catch (error) {
         console.error(error);
         setLoading(false);
@@ -92,15 +92,6 @@ export default function TeamDetails() {
                   </button>
                 </a>
               </div>
-            )}
-
-            {team.color && (
-              <div
-                style={{
-                  backgroundColor: team.color,
-                }}
-                className="h-10 w-10 mt-4 rounded-full"
-              ></div>
             )}
 
             <div>
