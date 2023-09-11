@@ -48,33 +48,33 @@ export default function TeamDetails() {
         <div>
           <h1 className="text-5xl font-bold mb-4">{team.team.displayName}</h1>
           <div className="team-details">
-            <p className="text-red-5000-contrast text-3xl font-mono">
+            <p className="text-red-5000-contrast text-1xl font-mono">
               Location: {team.team.location}
             </p>
             <p className="text-3xl font-mono">
-              <span className="text-black-500 text-3xl">Active: </span>
+              <span className="text-black-500 text-1xl">Active: </span>
               <span className={team.team.isActive ? "text-green-500" : "text-black-500"}>
                 {team.team.isActive ? "Yes" : "No"}
               </span>
             </p>
 
             <p className="text-3xl font-mono">
-              <span className="text-black-500 text-3xl">All-Star: </span>
+              <span className="text-black-500 text-1xl">All-Star: </span>
               <span className={team.team.isAllStar ? "text-red-500" : "text-red-500"}>
                 {team.team.isAllStar ? "Yes" : "No"}
               </span>
             </p>
-            <p className="text-black-500 text-3xl font-mono">
+            <p className="text-black-500 text-1xl font-mono">
               Record: {team.team.record.items[0]?.summary}
             </p>
-            <p className="text-3xl font-mono">
+            <p className="text-1xl font-mono">
               Next Event:{team.team.nextEvent[0]?.name || "No upcoming events"}
             </p>
 
-            <p className="text-black-500 text-3xl font-mono">
+            <p className="text-black-500 text-1xl font-mono">
               Stadium: {team.team.franchise.venue.fullName}
             </p>
-            <p className="text-black-500 text-3xl font-mono">
+            <p className="text-black-500 text-1xl font-mono">
               Division Standings: {team.team.standingSummary}
             </p>
 
@@ -85,7 +85,7 @@ export default function TeamDetails() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="teamRosterButton bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                  <button className="teamRosterButton bg-blue-500 text-white font-bold py-1 px-1 rounded">
                     Active Roster
                   </button>
                 </a>
@@ -107,7 +107,7 @@ export default function TeamDetails() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="teamRosterButton bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                <button className="teamRosterButton bg-blue-500 text-white font-bold py-1 px-1 rounded">
                   Player Stats
                 </button>
               </a>
@@ -119,7 +119,7 @@ export default function TeamDetails() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="teamRosterButton bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                <button className="teamRosterButton bg-blue-500 text-white font-bold py-1 px-1 rounded">
                   Schedule
                 </button>
               </a>
