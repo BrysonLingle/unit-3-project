@@ -36,7 +36,7 @@ export default function TeamDetails() {
       <button className="homeButton">
         <Link
           to="/"
-          className="back-button text-blue-500 hover:"
+          className="back-button bg-blue-500 text-white font-bold py-2 px-4 rounded"
         >
           Back to Teams
         </Link>
@@ -46,35 +46,35 @@ export default function TeamDetails() {
         <div className="text-lg font-bold">Loading...</div>
       ) : team ? (
         <div>
-          <h1 className="text-3xl font-bold mb-4">{team.team.displayName}</h1>
+          <h1 className="text-5xl font-bold mb-4">{team.team.displayName}</h1>
           <div className="team-details">
-            <p className="text-red-5000-contrast text-lg font-bold">
+            <p className="text-red-5000-contrast text-3xl font-mono">
               Location: {team.team.location}
             </p>
-            <p className="text-red-500 text-lg font-bold">
-              Active: {team.team.isActive ? "Yes" : "No"}
+            <p className="text-3xl font-mono">
+              <span className="text-black-500 text-3xl">Active: </span>
+              <span className={team.team.isActive ? "text-green-500" : "text-black-500"}>
+                {team.team.isActive ? "Yes" : "No"}
+              </span>
             </p>
-            <p className="text-black-500 text-lg font-bold">
-              All-Star: {team.team.isAllStar ? "Yes" : "No"}
+
+            <p className="text-3xl font-mono">
+              <span className="text-black-500 text-3xl">All-Star: </span>
+              <span className={team.team.isAllStar ? "text-red-500" : "text-red-500"}>
+                {team.team.isAllStar ? "Yes" : "No"}
+              </span>
             </p>
-            <p className="text-black-500 text-lg font-bold">
+            <p className="text-black-500 text-3xl font-mono">
               Record: {team.team.record.items[0]?.summary}
             </p>
-            <p className="text-black-500 text-lg font-bold">
-              Next Event:{" "}
-              <a
-                href={team.team.nextEvent[0]?.opponentStatsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                {team.team.nextEvent[0]?.name}
-              </a>
+            <p className="text-3xl font-mono">
+              Next Event:{team.team.nextEvent[0]?.name || "No upcoming events"}
             </p>
-            <p className="text-black-500 text-lg font-bold">
+
+            <p className="text-black-500 text-3xl font-mono">
               Stadium: {team.team.franchise.venue.fullName}
             </p>
-            <p className="text-black-500 text-lg font-bold">
+            <p className="text-black-500 text-3xl font-mono">
               Division Standings: {team.team.standingSummary}
             </p>
 

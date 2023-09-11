@@ -95,19 +95,8 @@ font-size: 23px;
   box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 
 }
-.homeButton {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.8);
-  background: rgb(145, 92, 182);
-  padding: 15px 40px;
-  border-radius: 4px;
-  font-weight: normal;
-  text-transform: uppercase;
-  transition: all 0.2s ease-in-out;
-  margin-bottom: 10px;
-  border-radius: 20px;
-}
-.homeButton:hover{
+
+.homeButton:hover {
   background-color: #6513bc; 
   color: rgb(255, 255, 255);
   transform: scale(1.2);
