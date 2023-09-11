@@ -53,14 +53,14 @@ export default function TeamDetails() {
             <p className="text-red-5000-contrast text-1xl font-mono">
               Location: {team.team.location}
             </p>
-            <p className="text-3xl font-mono">
+            <p className="text-1xl font-mono">
               <span className="text-black-500 text-1xl">Active: </span>
               <span className={team.team.isActive ? "text-green-500" : "text-black-500"}>
                 {team.team.isActive ? "Yes" : "No"}
               </span>
             </p>
 
-            <p className="text-3xl font-mono">
+            <p className="text-1xl font-mono">
               <span className="text-black-500 text-1xl">All-Star: </span>
               <span className={team.team.isAllStar ? "text-red-500" : "text-red-500"}>
                 {team.team.isAllStar ? "Yes" : "No"}
