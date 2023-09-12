@@ -10,6 +10,8 @@
 # ScreenShots
 * ![Alt text](<Screenshot 2023-09-11 at 9.28.18 AM.png>)
 * ![Team Detail Page](<Screenshot 2023-09-11 at 9.28.55 AM.png>)
+# Deployment
+* [NFL Stats]https://main--tourmaline-cupcake-aa930e.netlify.app/
 
 
 # Icebox Features
